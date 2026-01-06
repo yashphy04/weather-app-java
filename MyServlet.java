@@ -31,7 +31,7 @@ public class MyServlet extends HttpServlet {
         }
 
         city = URLEncoder.encode(city, StandardCharsets.UTF_8);
-        String apiKey = "b19620b9e7094af7e4b7f36e194bd6d3";
+        String apiKey = "###########################";
 
         String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q="
                 + city + "&appid=" + apiKey + "&units=metric";
@@ -68,3 +68,4 @@ public class MyServlet extends HttpServlet {
         request.getRequestDispatcher("result.jsp").forward(request, response);
     }
 }
+
