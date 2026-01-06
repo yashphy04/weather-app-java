@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: url("image/weather-bg.jpg") no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* ===== ANIMATED OVERLAY ===== */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(0,0,0,0.6), rgba(0,0,0,0.25));
+            animation: bgMove 8s infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes bgMove {
+            from { filter: hue-rotate(0deg); }
+            to   { filter: hue-rotate(30deg); }
+        }
+
+        /* ===== MAIN CARD ===== */
+        .weather-card {
+            position: relative;
+            z-index: 2;
+            width: 360px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* ===== LOGO ===== */
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+            animation: logoPulse 2.5s infinite;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 26px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 22px rgba(0,0,0,0.45);
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="weather-card">
+
+        <!-- 🔰 LOGO -->
+        <img src="image/logo.gif" alt="Weather App Logo" class="logo">
+
+        <h1>Weather App</h1>
+
+        <!-- 🌐 FORM -->
+        <form action="MyServlet" method="post">
+            <input type="text" name="userInput" placeholder="Enter city name" required>
+            <button type="submit">Get Weather</button>
+        </form>
+
+       <div class="footer">
+    Powered by OpenWeather API | Developed by Yash Raj
+</div>
+
+    </div>
+
+</body>
+</html>
